@@ -24,7 +24,7 @@
         "source": "https://github.com/xiaoxuan6/packet"
     },
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "illuminate/collections": "^10.48",
         "symfony/finder": "^6.4",
         "webmozart/assert": "^1.11"
@@ -35,15 +35,19 @@
         "icanhazstring/composer-unused": "^0.8.11",
         "rector/rector": "^1.0"
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true,
     "bin": [
         "bin/packet"
     ],
     "config": {
         "allow-plugins": {
             "ergebnis/composer-normalize": true
-        }
+        },
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "8.1"
+        },
+        "preferred-install": "dist",
+        "sort-packages": true
     },
     "scripts": {
         "fix": [
