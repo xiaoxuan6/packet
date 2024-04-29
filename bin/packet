@@ -90,6 +90,7 @@ $class = new class () {
             ]);
         }
 
+        $scripts->put('unused', 'vendor/bin/composer-unused --ansi -v');
         $composerJson['scripts'] = $scripts->toArray();
         file_put_contents(
             $basePath . DIRECTORY_SEPARATOR . $composerFilename,

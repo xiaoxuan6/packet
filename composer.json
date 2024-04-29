@@ -2,6 +2,16 @@
     "name": "james.xue/packet",
     "description": "代码格式化、静态分析等",
     "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "static analysis",
+        "composer",
+        "unused",
+        "php-parser",
+        "rector",
+        "fixer",
+        "pint"
+    ],
     "authors": [
         {
             "name": "xiaoxuan6",
@@ -21,7 +31,8 @@
     },
     "require-dev": {
         "rector/rector": "^1.0",
-        "friendsofphp/php-cs-fixer": "^3.52"
+        "friendsofphp/php-cs-fixer": "^3.52",
+        "icanhazstring/composer-unused": "^0.8.11"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -31,14 +42,10 @@
     "scripts": {
         "pint": "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=no",
         "rector": "vendor/bin/rector process --config=rector.php --no-diffs --ansi",
+        "unused": "vendor/bin/composer-unused --ansi",
         "fix": [
             "@rector",
             "@pint"
         ]
-    },
-    "autoload": {
-        "psr-4": {
-            "Vinhson\\Packet\\": "src/"
-        }
     }
 }
