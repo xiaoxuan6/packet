@@ -1,0 +1,103 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * This file is part of james.xue/packet.
+ *
+ * (c) xiaoxuan6 <1527736751@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ *
+ */
+
+use Webmozart\Assert\Assert;
+use Illuminate\Support\Collection;
+use Symfony\Component\Filesystem\Filesystem;
+
+$possibleFiles = [__DIR__ . '/../../autoload.php', __DIR__ . '/../autoload.php', __DIR__ . '/vendor/autoload.php', __DIR__ . '/../vendor/autoload.php'];
+foreach ($possibleFiles as $possibleFile) {
+    if (file_exists($possibleFile)) {
+        require_once $possibleFile;
+
+        break;
+    }
+}
+
+$class = new class () {
+    public function __invoke()
+    {
+        (new Filesystem())->copy(
+            __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'packet.php',
+            getcwd() . DIRECTORY_SEPARATOR . 'packet.php'
+        );
+
+        $basePath = getcwd();
+        $composerFilename = 'composer.json';
+
+        if (! file_exists($basePath . DIRECTORY_SEPARATOR . $composerFilename)) {
+            Assert::fileExists($composerFilename, 'file [%s] not exists!');
+        }
+
+        $composerJson = json_decode(file_get_contents($composerFilename), true);
+        $scripts = collect($composerJson)->get('scripts') ?? [];
+
+        $scripts = Collection::make()
+            ->tap(function () use (&$pint, $scripts): void {
+                $pint = collect($scripts)->get('pint');
+            })->pipe(function () use ($pint, &$scripts, &$pintStat) {
+                if (! is_null($pint)) {
+                    $pintStat = false;
+
+                    return collect($scripts);
+                }
+
+                $pintStat = true;
+
+                return collect($scripts)->put(
+                    'pint',
+                    'vendor/bin/php-cs-fixer fix --config=vendor/james.xue/packet/.php-cs-fixer.php --using-cache=no --verbose --ansi'
+                );
+            });
+
+        $scripts = collect()
+            ->tap(function () use (&$rector, $scripts): void {
+                /*** @var $scripts Collection */
+                $rector = $scripts->get('rector');
+            })->pipe(function () use ($rector, &$scripts, &$rectorStat) {
+                if (! is_null($rector)) {
+                    $rectorStat = false;
+
+                    return $scripts;
+                }
+
+                $rectorStat = true;
+
+                /*** @var $scripts Collection */
+                return $scripts->put(
+                    'rector',
+                    'vendor/bin/rector process --config=vendor/james.xue/packet/rector.php --no-diffs --ansi'
+                );
+            });
+
+        if ($pintStat || $rectorStat) {
+            /*** @var $scripts Collection */
+            $scripts = $scripts->merge([
+                'fix' => [
+                    '@rector',
+                    '@pint'
+                ]
+            ]);
+        }
+
+        $composerJson['scripts'] = $scripts->toArray();
+        file_put_contents(
+            $basePath . DIRECTORY_SEPARATOR . $composerFilename,
+            json_encode($composerJson, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
+        );
+
+        echo 'Done. packet set successful';
+    }
+};
+
+$class();

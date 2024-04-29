@@ -1,0 +1,44 @@
+{
+    "name": "james.xue/packet",
+    "description": "代码格式化、静态分析等",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xiaoxuan6",
+            "email": "1527736751@qq.com"
+        }
+    ],
+    "homepage": "https://github.com/xiaoxuan6/packet.git",
+    "support": {
+        "issues": "https://github.com/xiaoxuan6/packet/issues",
+        "source": "https://github.com/xiaoxuan6/packet"
+    },
+    "require": {
+        "php": "^8.0",
+        "webmozart/assert": "^1.11",
+        "illuminate/collections": "^10.48",
+        "symfony/finder": "^6.4"
+    },
+    "require-dev": {
+        "rector/rector": "^1.0",
+        "friendsofphp/php-cs-fixer": "^3.52"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "bin": [
+        "bin/packet"
+    ],
+    "scripts": {
+        "pint": "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=no",
+        "rector": "vendor/bin/rector process --config=rector.php --no-diffs --ansi",
+        "fix": [
+            "@rector",
+            "@pint"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Vinhson\\Packet\\": "src/"
+        }
+    }
+}
