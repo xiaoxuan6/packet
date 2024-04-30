@@ -35,6 +35,8 @@
         "icanhazstring/composer-unused": "^0.8.11",
         "rector/rector": "^1.0"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "bin": [
         "bin/packet"
     ],
