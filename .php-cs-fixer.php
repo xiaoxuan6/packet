@@ -20,7 +20,7 @@ with this source code in the file LICENSE.
 
 HEADER;
 
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoload.php';
 spl_autoload_register(fn() => require_once __DIR__ . DIRECTORY_SEPARATOR . 'PacketConfig.php');
 
 $packet = new PacketConfig();

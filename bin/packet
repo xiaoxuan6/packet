@@ -15,14 +15,7 @@ use Webmozart\Assert\Assert;
 use Illuminate\Support\Collection;
 use Symfony\Component\Filesystem\Filesystem;
 
-$possibleFiles = [__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php'];
-foreach ($possibleFiles as $possibleFile) {
-    if (file_exists($possibleFile)) {
-        require_once $possibleFile;
-
-        break;
-    }
-}
+require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 $class = new class () {
     public function __invoke()
