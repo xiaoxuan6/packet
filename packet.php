@@ -10,6 +10,7 @@
  *
  */
 
+use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\{LevelSetList, SetList};
 
 return [
@@ -35,11 +36,15 @@ return [
         ],
 
         'sets' => [
-            LevelSetList::UP_TO_PHP_80,
+            LevelSetList::UP_TO_PHP_81,
             SetList::INSTANCEOF,
             SetList::TYPE_DECLARATION,
             SetList::EARLY_RETURN,
-            SetList::PHP_80,
-        ]
+            SetList::PHP_81,
+        ],
+
+        'callable' => function (RectorConfig $rectorConfig) {
+            $rectorConfig->fileExtensions(['.php']);
+        }
     ]
 ];

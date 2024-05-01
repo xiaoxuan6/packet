@@ -27,4 +27,6 @@ return static function (RectorConfig $rectorConfig) use ($packet) {
     $rectorConfig->removeUnusedImports();
 
     $rectorConfig->sets($packet->getSets());
+
+    $packet->getCall()($rectorConfig);
 };

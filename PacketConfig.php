@@ -88,4 +88,9 @@ class PacketConfig
     {
         return $this->rector()->get('sets');
     }
+
+    public function getCall(): callable
+    {
+        return $this->rector()->get('callable');
+    }
 }
