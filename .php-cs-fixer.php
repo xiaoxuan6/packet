@@ -27,6 +27,7 @@ $packet = new PacketConfig();
 
 $finder = PhpCsFixer\Finder::create()
     ->in($packet->getFixerPath())
+    ->notPath($packet->getNotPath())
     ->exclude($packet->getFixerExclude())
     ->name($packet->getFixerName())
     ->ignoreDotFiles(true)

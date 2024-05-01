@@ -64,6 +64,11 @@ class PacketConfig
         return $this->phpCsFixer()->get('in');
     }
 
+    public function getNotPath(): array
+    {
+        return $this->phpCsFixer()->get('not-path');
+    }
+
     public function getFixerExclude(): array
     {
         return $this->phpCsFixer()->get('exclude');
