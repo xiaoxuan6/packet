@@ -30,6 +30,7 @@ $finder = PhpCsFixer\Finder::create()
     ->notPath($packet->getNotPath())
     ->exclude($packet->getFixerExclude())
     ->name($packet->getFixerName())
+    ->notName($packet->getNotName())
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 

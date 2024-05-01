@@ -79,6 +79,11 @@ class PacketConfig
         return $this->phpCsFixer()->get('name');
     }
 
+    public function getNotName(): array
+    {
+        return $this->phpCsFixer()->get('not-name');
+    }
+
     public function rector(): Collection
     {
         return collect($this->packetJson()->get('rector'));

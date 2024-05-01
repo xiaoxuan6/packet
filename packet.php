@@ -58,6 +58,13 @@ return [
         'name' => [
             '*.php',
             'packet'
+        ],
+
+        /**
+         * Adds rules that files must not match.
+         */
+        'not-name' => [
+
         ]
     ],
 
