@@ -15,6 +15,16 @@ use Rector\Set\ValueObject\{LevelSetList, SetList};
 
 return [
     'php-cs-fixer' => [
+        'header' => <<<HEADER
+This file is part of james.xue/packet.
+
+(c) xiaoxuan6 <1527736751@qq.com>
+
+This source file is subject to the MIT license that is bundled
+with this source code in the file LICENSE.
+
+HEADER,
+
         'in' => [
             __DIR__,
             __DIR__ . DIRECTORY_SEPARATOR . 'bin',

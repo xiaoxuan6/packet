@@ -10,16 +10,6 @@
  *
  */
 
-$header = <<<HEADER
-This file is part of james.xue/packet.
-
-(c) xiaoxuan6 <1527736751@qq.com>
-
-This source file is subject to the MIT license that is bundled
-with this source code in the file LICENSE.
-
-HEADER;
-
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoload.php';
 spl_autoload_register(fn() => require_once __DIR__ . DIRECTORY_SEPARATOR . 'PacketConfig.php');
 
@@ -37,7 +27,7 @@ $finder = PhpCsFixer\Finder::create()
 return (new PhpCsFixer\Config())
     ->setRules([
         '@PSR12' => true,
-        'header_comment' => ['header' => $header],
+        'header_comment' => ['header' => $packet->getHeader()],
         'array_syntax' => ['syntax' => 'short'],
         'no_useless_else' => true,
         'not_operator_with_successor_space' => true,

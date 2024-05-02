@@ -28,7 +28,7 @@ class PacketConfig
             ->filter(fn (SplFileInfo $fileInfo) => $fileInfo->getFilename() == 'packet.php');
 
         if ($finder->count() == 0) {
-            $filepath = 'packet.php';
+            $filepath = __DIR__ . DIRECTORY_SEPARATOR . 'packet.php';
         } else {
             $filepath = '';
             foreach ($finder as $file) {
@@ -46,9 +46,7 @@ class PacketConfig
     public function packetJson(): Collection
     {
         if (empty($this->packetConfig)) {
-            $packet = str_replace(getcwd(), '', $this->findPacket());
-
-            $this->packetConfig = require_once __DIR__ . DIRECTORY_SEPARATOR . $packet;
+            $this->packetConfig = require_once $this->findPacket();
         }
 
         return collect($this->packetConfig);
@@ -57,6 +55,11 @@ class PacketConfig
     public function phpCsFixer(): Collection
     {
         return collect($this->packetJson()->get('php-cs-fixer'));
+    }
+
+    public function getHeader(): string
+    {
+        return $this->phpCsFixer()->get('header');
     }
 
     public function getFixerPath(): array
