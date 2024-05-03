@@ -2,7 +2,6 @@
     "name": "james.xue/packet",
     "description": "代码格式化、静态分析等",
     "license": "MIT",
-    "type": "library",
     "keywords": [
         "static analysis",
         "composer",
@@ -34,8 +33,6 @@
         "symfony/finder": "^6.4",
         "webmozart/assert": "^1.11"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "bin": [
         "bin/packet"
     ],
