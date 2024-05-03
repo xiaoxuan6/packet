@@ -91,7 +91,7 @@ $class = new class () {
             json_encode($composerJson, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT)
         );
 
-        echo 'Done. packet set successful';
+        echo 'Done. packet set successful' . PHP_EOL;
     }
 };
 
