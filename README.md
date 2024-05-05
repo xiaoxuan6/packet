@@ -1,6 +1,17 @@
-# packet
+<div align="center">
+
+<h1>packet</h1> 
 
 代码格式化、静态分析等
+
+![GitHub watchers](https://img.shields.io/github/watchers/xiaoxuan6/packet?style=flat)
+![GitHub forks](https://img.shields.io/github/forks/xiaoxuan6/packet?style=flat-square)
+![GitHub Repo stars](https://img.shields.io/github/stars/xiaoxuan6/packet?style=flat)
+![GitHub Release](https://img.shields.io/github/v/release/xiaoxuan6/packet)
+![GitHub Tag](https://img.shields.io/github/v/tag/xiaoxuan6/packet)
+![GitHub License](https://img.shields.io/github/license/xiaoxuan6/packet)
+
+</div>
 
 # Install
 
