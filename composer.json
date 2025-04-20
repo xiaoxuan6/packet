@@ -23,11 +23,11 @@
         "source": "https://github.com/xiaoxuan6/packet"
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ergebnis/composer-normalize": "^2.42",
         "friendsofphp/php-cs-fixer": "^3.52",
         "icanhazstring/composer-unused": "^0.8.11",
-        "illuminate/collections": "^10.48",
+        "illuminate/collections": "^12.0",
         "rector/rector": "^1.0",
         "symfony/filesystem": "^6.4",
         "symfony/finder": "^6.4",
@@ -42,7 +42,7 @@
         },
         "optimize-autoloader": true,
         "platform": {
-            "php": "8.1"
+            "php": "8.2"
         },
         "preferred-install": "dist",
         "sort-packages": true
