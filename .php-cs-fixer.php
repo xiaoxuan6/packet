@@ -97,5 +97,5 @@ return (new PhpCsFixer\Config())
                 'property',
             ],
         ],
-    ])
+    ] + $packet->getRules())
     ->setFinder($finder);

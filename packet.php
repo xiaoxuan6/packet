@@ -75,6 +75,10 @@ HEADER,
          */
         'not-name' => [
 
+        ],
+
+        'rules' => [
+
         ]
     ],
 
@@ -84,11 +88,11 @@ HEADER,
         ],
 
         'sets' => [
-            LevelSetList::UP_TO_PHP_81,
+            LevelSetList::UP_TO_PHP_82,
             SetList::INSTANCEOF,
             SetList::TYPE_DECLARATION,
             SetList::EARLY_RETURN,
-            SetList::PHP_81,
+            SetList::PHP_82,
         ],
 
         'callable' => function (RectorConfig $rectorConfig) {
